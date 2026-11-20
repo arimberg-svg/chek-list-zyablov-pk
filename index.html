@@ -5,417 +5,368 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Десять смен продавца-консультанта. Зяблов Михаил</title>
   <meta name="description" content="Чек-лист на 10 смен: Зяблов Михаил, продавец-консультант, Заводоуковск. Ведёт Ипатьев Андрей." />
-  <meta name="robots" content="noindex, nofollow" />
   <style>
     :root {
-      --violet: #4208A8;
-      --ink: #111111;
-      --line: #CCCCCC;
+      --ink: #222222;
       --paper: #ffffff;
-      --page: #f4f4f4;
-      --font: Arial, Helvetica, sans-serif;
-      --head: "Arial Black", Arial, Helvetica, sans-serif;
+      --page-w: 210mm;
+      --font: Arial, "Helvetica Neue", Helvetica, sans-serif;
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       color: var(--ink);
       font-family: var(--font);
-      font-size: 16px;
-      line-height: 1.45;
-      background: var(--page);
+      font-size: 18px;
+      line-height: 1.4;
+      background: #f0f0f0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
     }
-    a { color: var(--violet); }
     .toolbar {
-      position: sticky;
-      top: 0;
-      z-index: 2;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
+      position: sticky; top: 0; z-index: 50;
+      display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
       justify-content: space-between;
-      padding: 10px 16px;
-      background: var(--violet);
+      padding: 8px 12px;
+      background: #555;
       color: #fff;
+      font-size: 12px;
     }
+    .toolbar .brand { display: flex; align-items: center; gap: 8px; }
+    .toolbar .brand img {
+      height: 28px; width: auto;
+      background: #fff; padding: 2px 4px;
+    }
+    .toolbar .actions { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
     .toolbar button {
-      border: 1px solid #fff;
+      border: 1px solid #ccc;
       background: transparent;
       color: #fff;
       font: inherit;
-      font-size: 15px;
-      padding: 6px 12px;
+      font-size: 12px;
+      padding: 5px 10px;
       cursor: pointer;
     }
-    .toolbar button.primary { background: #fff; color: var(--violet); }
-    .status { font-size: 14px; }
+    .toolbar button.primary { background: #fff; color: #444; border-color: #fff; }
+    .toolbar button:hover { background: #666; }
+    .toolbar .status { font-size: 11px; opacity: .85; }
+    .sheet-wrap {
+      width: min(var(--page-w), calc(100% - 16px));
+      margin: 12px auto 32px;
+    }
     .sheet {
-      width: min(920px, calc(100% - 24px));
-      margin: 16px auto 40px;
       background: var(--paper);
-      border: 1px solid var(--line);
-      padding: 22px 24px 36px;
+      border: 1px solid #bbb;
+      box-shadow: 0 1px 6px rgba(0,0,0,.08);
+      padding: 16px 18px 22px;
     }
     .motto {
-      margin: 0 0 8px;
       text-align: center;
-      color: var(--violet);
-      font-family: var(--head);
-      font-size: 14px;
-      letter-spacing: 0.04em;
-    }
-    .logo { display: block; width: 250px; max-width: 70%; height: auto; margin: 0 auto 8px; }
-    h1 {
+      color: #888;
+      font-size: 12px;
       margin: 0 0 8px;
-      font-family: var(--head);
-      font-size: 28px;
-      line-height: 1.15;
-      font-weight: 900;
+      letter-spacing: .04em;
     }
-    h2 {
-      margin: 0 0 8px;
-      font-family: var(--head);
-      font-size: 20px;
-      font-weight: 900;
-      color: var(--violet);
-    }
-    h3 { margin: 12px 0 6px; font-size: 16px; }
-    .lead { margin: 0 0 10px; }
-    .plan {
+    .title-block {
+      text-align: center;
       margin: 0 0 14px;
-      padding: 10px 12px;
-      background: #f7f7f7;
-      border-left: 4px solid var(--violet);
+      padding: 0 0 10px;
+      border-bottom: 1px solid #ccc;
     }
-    .plan p { margin: 0 0 6px; }
-    .plan p:last-child { margin: 0; }
-    .fields { display: grid; gap: 8px; margin: 0 0 8px; }
-    .field { display: grid; grid-template-columns: 180px 1fr; gap: 8px; align-items: end; }
-    .ink {
-      width: 100%;
+    .title-block .logo {
+      display: block;
+      width: min(250px, 70%);
+      height: auto;
+      margin: 0 auto 6px;
+    }
+    .eyebrow { margin: 0; font-size: 11px; color: #999; }
+    h1 {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.25;
+      margin: 4px 0 2px;
+      color: #222;
+    }
+    .meta { display: grid; gap: 8px; margin: 0 0 12px; }
+    .field {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 8px;
+      align-items: end;
+      font-size: 14px;
+    }
+    .field span { color: #444; padding-bottom: 2px; }
+    .field .ink {
       border: none;
       border-bottom: 1px solid #999;
-      font: inherit;
-      padding: 3px 2px;
       background: transparent;
-    }
-    table {
+      font: inherit;
+      font-size: 15px;
+      padding: 2px 4px;
+      color: var(--ink);
       width: 100%;
-      border-collapse: collapse;
-      margin: 0 0 16px;
-      font-size: 14px;
+      min-width: 0;
     }
-    th, td {
-      border: 1px solid var(--line);
-      padding: 6px 8px;
-      vertical-align: top;
-      text-align: left;
+    .field .ink:focus { outline: none; border-bottom-color: #555; }
+    .scheme { margin: 0 0 14px; font-size: 13px; color: #444; line-height: 1.45; }
+    .scheme b { font-weight: 700; }
+    .block { margin: 0 0 16px; }
+    h2 {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 1.3;
+      color: #222;
+      margin: 0 0 6px;
+      page-break-after: avoid;
     }
-    th { background: var(--violet); color: #fff; font-weight: 700; }
-    .day { margin: 0 0 18px; padding-top: 10px; border-top: 1px solid var(--line); }
-    .tag {
-      display: inline-block;
-      margin: 0 0 8px;
-      padding: 2px 8px;
-      background: #f7f7f7;
-      border: 1px solid var(--line);
-      font-size: 14px;
-    }
+    .when { margin: 0 0 8px; font-size: 13px; color: #555; }
+    .list { display: flex; flex-direction: column; gap: 6px; }
     .item {
       display: grid;
-      grid-template-columns: 20px 1fr;
+      grid-template-columns: 18px 1fr;
       gap: 8px;
       align-items: start;
-      margin: 0 0 6px;
       cursor: pointer;
+      font-size: 18px;
+      line-height: 1.4;
     }
-    .item input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-    .box {
+    .item input {
+      position: absolute;
+      opacity: 0;
+      width: 1px;
+      height: 1px;
+      pointer-events: none;
+    }
+    .item .box {
       width: 16px;
       height: 16px;
-      margin-top: 3px;
-      border: 1.5px solid var(--violet);
+      margin-top: 2px;
+      border: 1.5px solid #666;
       background: #fff;
     }
     .item input:checked + .box {
-      background: var(--violet);
-      box-shadow: inset 0 0 0 3px #fff;
+      background: #555;
+      border-color: #555;
+      box-shadow: inset 0 0 0 2px #fff;
     }
-    .close { margin-top: 6px; padding-top: 12px; border-top: 1px solid var(--line); }
+    .proc { font-weight: 700; }
+    .steps { margin: 6px 0 0; padding-left: 20px; }
+    .steps li { margin: 4px 0; }
+    .lines { display: grid; gap: 10px; margin-top: 6px; }
+    .lines span { font-size: 14px; color: #444; }
+    .lines .ink {
+      border: none;
+      border-bottom: 1px solid #999;
+      background: transparent;
+      font: inherit;
+      font-size: 15px;
+      height: 28px;
+      padding: 4px 2px 2px;
+      width: 100%;
+    }
+    .lines .ink:focus { outline: none; border-bottom-color: #555; }
+    .admit {
+      margin: 18px 0 12px;
+      padding-top: 12px;
+      border-top: 1px solid #ccc;
+      page-break-inside: avoid;
+    }
+    .admit h2 { margin-bottom: 10px; }
+    .sign { display: grid; gap: 8px; margin-top: 8px; }
+    .sign .field { grid-template-columns: 280px 1fr; }
+    @media (max-width: 640px) {
+      .field, .sign .field { grid-template-columns: 1fr; gap: 2px; }
+      .sheet { padding: 12px; }
+    }
+    @page { size: A4; margin: 8mm 10mm; }
     @media print {
-      .toolbar { display: none; }
-      body { background: #fff; font-size: 13px; }
-      .sheet { width: auto; margin: 0; border: none; padding: 0; }
-      .day, tr { break-inside: avoid; }
-      a { color: #111; text-decoration: none; }
-    }
-    @media (max-width: 700px) {
-      .field { grid-template-columns: 1fr; }
-      h1 { font-size: 24px; }
+      .toolbar { display: none !important; }
+      body { background: #fff; font-size: 15px; line-height: 1.28; }
+      .sheet-wrap { width: 100%; margin: 0; }
+      .sheet { border: none; box-shadow: none; padding: 0; }
+      .motto { margin: 0 0 2px; }
+      .title-block { margin: 0 0 6px; padding: 0 0 4px; }
+      .title-block .logo { width: 140px; }
+      h1 { font-size: 17px; margin: 2px 0 0; }
+      h2 { font-size: 16px; margin: 0 0 2px; }
+      .meta { gap: 2px; margin: 0 0 6px; }
+      .field { gap: 4px; }
+      .scheme { margin: 0 0 4px; line-height: 1.3; font-size: 12px; }
+      .when { margin: 0 0 3px; font-size: 12px; }
+      .block { margin: 0 0 2px; }
+      .list { gap: 2px; }
+      .item { font-size: 14.5px; gap: 5px; line-height: 1.25; }
+      .steps { font-size: 13.5px; margin: 1px 0 0; }
+      .steps li { margin: 0; }
+      .item .box { width: 13px; height: 13px; border-width: 1px; margin-top: 1px; }
+      .lines { gap: 3px; margin-top: 2px; }
+      .lines .ink { height: 16px; }
+      .item, .lines { break-inside: avoid; page-break-inside: avoid; }
+      .block.day { break-before: page; page-break-before: always; }
+      .sheet > .block.day:first-of-type { break-before: auto; page-break-before: auto; }
     }
   </style>
 </head>
 <body>
   <div class="toolbar">
-    <span>Заводоуковск · Зяблов Михаил · 10 смен</span>
-    <span>
-      <button type="button" id="btn-print" class="primary">Печать</button>
-      <button type="button" id="btn-clear">Очистить отметки</button>
-      <span class="status" id="status"></span>
-    </span>
+    <div class="brand">
+      <img src="assets/logo.png" alt="У Михалыча" width="120" height="36" />
+      <span>Заводоуковск · Зяблов Михаил · 10 смен</span>
+    </div>
+    <div class="actions">
+      <span class="status" id="save-status">отметки хранятся в этом браузере</span>
+      <button type="button" id="btn-save">Сохранить</button>
+      <button type="button" id="btn-clear">Очистить</button>
+      <button type="button" class="primary" id="btn-print">Печать / PDF</button>
+    </div>
   </div>
 
-  <main class="sheet" id="sheet">
-    <p class="motto">Делаем мир крепче</p>
-    <img class="logo" src="assets/logo.png" alt="У Михалыча" width="250" />
-    <h1>Десять смен, чтобы выйти в зал своим продавцом</h1>
-    <p class="lead">Зяблов Михаил, продавец-консультант, магазин №31, г. Заводоуковск, ул. Черёмуховая, 23, строение 1. Ведёт Ипатьев Андрей, старший продавец-консультант этой точки.</p>
-    <p class="lead">Михаил, здесь то, что нужно закрыть, чтобы консультация, полка и касса были нашими. Каждый день одно умение из топ-10 и короткая инструкция Академии. Качество из того же списка Андрей смотрит в живом разговоре с покупателем.</p>
+  <div class="sheet-wrap">
+    <article class="sheet" id="checklist">
+      <p class="motto">Делаем мир крепче</p>
+      <header class="title-block">
+        <img class="logo" src="assets/logo.png" alt="У Михалыча" width="250" height="72" />
+        <p class="eyebrow">сеть «У Михалыча»</p>
+        <h1>Десять смен продавца-консультанта · Зяблов Михаил</h1>
+      </header>
 
-    <div class="plan">
-      <p>Отметку ставит Андрей, когда шаг сделан на смене, а не когда страницу только открыли. Если в этот день выходной, шаг переносится на следующую смену. Пустой квадрат значит, что шаг ещё впереди.</p>
-      <p>Эти десять смен готовят к самостоятельной консультации. Карту оценки на 30-й день Андрей заполняет отдельно, по стандарту испытания.</p>
-    </div>
+      <div class="meta">
+        <label class="field"><span>Продавец</span><input type="text" data-k class="ink" autocomplete="off" value="Зяблов Михаил" /></label>
+        <label class="field"><span>Должность</span><input type="text" data-k class="ink" autocomplete="off" value="Продавец-консультант" /></label>
+        <label class="field"><span>Магазин</span><input type="text" data-k class="ink" autocomplete="off" value="№31, Заводоуковск, Черёмуховая, 23, строение 1" /></label>
+        <label class="field"><span>Наставник</span><input type="text" data-k class="ink" autocomplete="off" value="Ипатьев Андрей, старший продавец-консультант" /></label>
+        <label class="field"><span>Зона</span><input type="text" data-k class="ink" autocomplete="off" /></label>
+        <label class="field"><span>Первая смена</span><input type="text" data-k class="ink" autocomplete="off" /></label>
+      </div>
 
-    <div class="fields">
-      <label class="field"><span>Первая смена</span><input class="ink" data-k type="text" autocomplete="off" /></label>
-      <label class="field"><span>Зона Михаила</span><input class="ink" data-k type="text" autocomplete="off" /></label>
-    </div>
+      <p class="scheme"><b>Десять рабочих смен в своём магазине.</b> Ведёт Ипатьев Андрей. Отмечает он, когда шаг сделан на смене. Если в этот день выходной, шаг переносится на следующую смену. Если не сделали, не отмечайте. До даты внизу листа Михаил консультирует рядом с Андреем.</p>
 
-    <h2>Как умение ложится на инструкцию</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>День</th>
-          <th>Умение</th>
-          <th>Качество в разговоре</th>
-          <th>Что открыть в Академии</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Навигация по залу</td>
-          <td>Интерес к товару. Работа в связке</td>
-          <td>Должностная инструкция продавца. Стандарт работы, зона и смена</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Назначение товара</td>
-          <td>Простые слова. Уважение к новичку</td>
-          <td>Собственные бренды. Зимние лопаты или снегоуборщики, что стоит у вас</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Маркировка и характеристики</td>
-          <td>Внимание к детали</td>
-          <td>Теплоноситель. Размер и шлиц на упаковке в своей зоне</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>Расчёт расхода</td>
-          <td>Честный ответ</td>
-          <td>Стандарт работы, знание товара. Цифра с упаковки</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Совместимость</td>
-          <td>Желание решить задачу человека</td>
-          <td>Труба дренажная. Дождеприёмник только с решёткой</td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>Вопросы по задаче</td>
-          <td>Терпение. Спокойствие, когда человеку тяжело</td>
-          <td>Стандарт работы, разговор с покупателем</td>
-        </tr>
-        <tr>
-          <td>7</td>
-          <td>Комплект под задачу</td>
-          <td>Один раз предложил и принял отказ</td>
-          <td>Добор товара на кассе. Генераторы: что взять вместе</td>
-        </tr>
-        <tr>
-          <td>8</td>
-          <td>Безопасность и хранение</td>
-          <td>Силы на всю смену</td>
-          <td>Должностная инструкция, нормы веса. Срок на полке</td>
-        </tr>
-        <tr>
-          <td>9</td>
-          <td>Остаток, аналог и ценник</td>
-          <td>Честный ответ. Работа в связке</td>
-          <td>Мёртвый сток. Монитор заказов, если на полке пусто</td>
-        </tr>
-        <tr>
-          <td>10</td>
-          <td>Порядок на полке и касса</td>
-          <td>Внимание к детали. Работа в связке</td>
-          <td>Возврат товара. Касса не работает. Лимит наличных. Мини-опрос</td>
-        </tr>
-      </tbody>
-    </table>
+      <section class="block day">
+        <h2>День 1. Где что лежит</h2>
+        <p class="when">Навигация по залу. Интерес к товару и работа в связке. Рядом с Андреем.</p>
+        <div class="list">
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt"><span class="proc">Выход на смену</span><ul class="steps"><li>Пришёл к началу смены в чистой форме. Бейдж читается. Обувь закрытая, своя</li><li>Назвал, кто руководитель в смене: старший продавец-консультант</li><li>Назвал, что входит в его работу: консультация, выкатка, ценники, пол своей зоны и помощь на машине, когда об этом сказали</li></ul></span></label>
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt"><span class="proc">Обход зоны</span><ul class="steps"><li>До покупателей обошёл зону: проход, пол, образцы, ценники, пустые места, акционные стеллажи</li><li>Грязь, пыль и неверный ценник убрал сразу</li><li>Показал, где крепёж, инструмент, сантехника, смеси и сезонный товар. Дорогу сказал или проводил до полки</li><li>Вопрос из чужой зоны: проводил человека к тому, кто в этом разбирается, и не оставил его одного в проходе</li></ul></span></label>
+        </div>
+        <div class="lines"><span>Заметки</span><input type="text" data-k class="ink" autocomplete="off" /><input type="text" data-k class="ink" autocomplete="off" /></div>
+      </section>
 
-    <section class="day">
-      <h2>День 1. Где что лежит</h2>
-      <p class="tag">Умение: навигация по залу. Качества: интерес к товару, работа в связке.</p>
-      <p class="lead">Сначала магазин целиком. Покупатель спрашивает дорогу, и ответ нужен сразу: стеллаж или «провожу».</p>
-      <h3>Прочитать</h3>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Открыл <a href="https://akademia.um-ural.ru/di-prodavca-pk/">должностную инструкцию продавца-консультанта</a>. Назвал своими словами: в смене руководит старший продавец-консультант, в зону входят консультация, выкатка, ценники, пол своей зоны и помощь на машине, когда об этом сказали.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Открыл <a href="https://akademia.um-ural.ru/ispytanie-pk/">стандарт работы</a>, раздел про зону и смену. Утром до покупателей и вечером перед закрытием товар своей зоны стоит на полке.</span></label>
-      <h3>Сделать с Андреем</h3>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Обошёл зону: проход, пол, образцы, ценники, пустые места, акционные стеллажи. Грязь, пыль и неверный ценник убрал сразу.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Показал, где крепёж, инструмент, сантехника, смеси и сезонный товар. Дорогу сказал или проводил до полки.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Вопрос из чужой зоны: проводил человека к тому, кто в этом разбирается, и не оставил его одного в проходе.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>На смене форма, бейдж читается, обувь закрытая.</span></label>
-    </section>
+      <section class="block day">
+        <h2>День 2. Для какой работы эта позиция</h2>
+        <p class="when">Назначение товара. Простые слова и уважение к новичку.</p>
+        <div class="list">
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt"><span class="proc">Пять позиций своей зоны</span><ul class="steps"><li>По каждой сказал, для какой работы она нужна</li><li>Две похожие не свалил в одну. Пример: гипсовая смесь и цементная, саморез по металлу и по дереву</li><li>Объяснил обычными словами. С человеком, который первый раз держит инструмент, говорил так же ровно, как с мастером</li></ul></span></label>
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt"><span class="proc">Свои марки и сезон</span><ul class="steps"><li>Назвал, какие группы у MIKA, TORRA и INALL стоят в этом магазине</li><li>Свою марку предложил первой, когда она закрывает задачу</li><li>По лопатам или снегоуборщикам, которые стоят в зале, сказал, кому какую позицию отдать</li><li>Свойство, которого нет на упаковке и в карточке, не назвал</li></ul></span></label>
+        </div>
+        <div class="lines"><span>Пять позиций</span><input type="text" data-k class="ink" autocomplete="off" /><input type="text" data-k class="ink" autocomplete="off" /></div>
+      </section>
 
-    <section class="day">
-      <h2>День 2. Для какой работы эта позиция</h2>
-      <p class="tag">Умение: назначение товара. Качества: простые слова, уважение к новичку.</p>
-      <p class="lead">Похожие банки и коробки легко свалить в одну. Здесь учатся называть работу и отличие.</p>
-      <h3>Прочитать</h3>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Открыл <a href="https://akademia.um-ural.ru/stm/">собственные бренды</a>: MIKA, TORRA и INALL. Понял, какие группы у какой марки.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Открыл то, что сейчас стоит в зале: <a href="https://akademia.um-ural.ru/zimka-2026-2027/">зимние лопаты</a> или <a href="https://akademia.um-ural.ru/snegouborshchiki-2026/">снегоуборщики</a>. Назвал, кому какую позицию отдать.</span></label>
-      <h3>Сделать с Андреем</h3>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>По пяти позициям своей зоны сказал назначение и чем две похожие отличаются. Пример из топ-10: гипсовая смесь и цементная, саморез по металлу и по дереву.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Объяснил обычными словами. С человеком, который первый раз держит инструмент, говорил так же ровно, как с мастером.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Свою марку предложил первой, когда она закрывает задачу. Свойство, которого нет на упаковке и в карточке, не назвал.</span></label>
-      <label class="field"><span>Пять позиций</span><input class="ink" data-k type="text" autocomplete="off" /></label>
-    </section>
+      <section class="block day">
+        <h2>День 3. Что написано на упаковке</h2>
+        <p class="when">Маркировка и характеристики. Внимание к детали. Свою цифру не придумывает.</p>
+        <div class="list">
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt"><span class="proc">Крепёж</span><ul class="steps"><li>Миллиметры и дюймы не смешал. Резьбу 1/2 и 3/4 назвал по упаковке</li><li>Шлиц PH и PZ отличил по маркировке</li><li>Диаметр измерил штангенциркулем. Длину измерил линейкой, в миллиметрах</li></ul></span></label>
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt"><span class="proc">Смесь, краска, инструмент, теплоноситель</span><ul class="steps"><li>Прочитал с упаковки расход, поверхность, ограничение по месту и по температуре</li><li>По теплоносителю назвал основной состав сезона, цвет и назначение так, как написано на упаковке</li><li>Цифру, которой на упаковке нет, не назвал</li></ul></span></label>
+        </div>
+        <div class="lines"><span>Что читали</span><input type="text" data-k class="ink" autocomplete="off" /><input type="text" data-k class="ink" autocomplete="off" /></div>
+      </section>
 
-    <section class="day">
-      <h2>День 3. Прочитать то, что написано на упаковке</h2>
-      <p class="tag">Умение: маркировка и характеристики. Качество: внимание к детали.</p>
-      <p class="lead">Ошибка в миллиметре или в шлице останавливает работу человека. Свою цифру здесь не придумывают.</p>
-      <h3>Прочитать</h3>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Открыл <a href="https://akademia.um-ural.ru/teplonositel-2026/">теплоноситель</a>. Назвал, какой состав основной в этом сезоне и чем упаковки отличаются по цвету и назначению.</span></label>
-      <h3>Сделать с Андреем</h3>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>В крепеже своей зоны прочитал размер: миллиметры и дюймы не смешал. Резьба 1/2 и 3/4, шлиц PH и PZ назвал по упаковке.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Диаметр, если его меряют, взял штангенциркулем. Длину взял линейкой, в миллиметрах.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>На смеси, краске или инструменте прочитал то, что нужно для выбора: расход, поверхность, ограничение по месту и температуре. Цифру, которой на упаковке нет, не назвал.</span></label>
-      <label class="field"><span>Что читали</span><input class="ink" data-k type="text" autocomplete="off" /></label>
-    </section>
+      <section class="block day">
+        <h2>День 4. Сколько нужно</h2>
+        <p class="when">Расчёт расхода. Честный ответ. Цифра с упаковки, итог вслух.</p>
+        <div class="list">
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt"><span class="proc">Одна живая задача</span><ul class="steps"><li>Посчитал мешки смеси, литры грунта или метры</li><li>Цифру взял с упаковки: площадь, толщина слоя, длина или число упаковок</li><li>Итог проговорил вслух: сколько упаковок забрать</li><li>Свою «примерную» норму не назвал</li><li>Если расхода на упаковке не нашёл, сказал об этом прямо, уточнил у Андрея и вернулся к покупателю с ответом</li></ul></span></label>
+        </div>
+        <div class="lines"><span>Задача и итог</span><input type="text" data-k class="ink" autocomplete="off" /><input type="text" data-k class="ink" autocomplete="off" /></div>
+      </section>
 
-    <section class="day">
-      <h2>День 4. Посчитать, сколько нужно</h2>
-      <p class="tag">Умение: расчёт расхода. Качество: честный ответ.</p>
-      <p class="lead">Покупатель уходит с мешками, литрами или метрами. Итог говорят вслух и берут с упаковки.</p>
-      <h3>Прочитать</h3>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>В <a href="https://akademia.um-ural.ru/ispytanie-pk/">стандарте работы</a> нашёл пункт про расход: площадь, толщина слоя, длина, мощность, число упаковок. Свою «примерную» норму не используют.</span></label>
-      <h3>Сделать с Андреем</h3>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Посчитал одну живую задачу: мешки смеси, литры грунта или метры. Цифру взял с упаковки или из модуля Академии и проговорил итог вслух: сколько упаковок забрать.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Если расхода на упаковке не нашёл, сказал об этом прямо, уточнил у Андрея и вернулся к покупателю с ответом.</span></label>
-      <label class="field"><span>Задача и итог</span><input class="ink" data-k type="text" autocomplete="off" /></label>
-    </section>
+      <section class="block day">
+        <h2>День 5. Что с чем стыкуется</h2>
+        <p class="when">Совместимость. Желание решить задачу человека. Говорит до оплаты.</p>
+        <div class="list">
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt"><span class="proc">Пара, которая не подходит</span><ul class="steps"><li>На своей зоне показал пару, которая не стыкуется: грунт не под эту краску, сверло не под этот материал, саморез не в то основание</li><li>Сказал об этом до оплаты</li><li>По дренажной трубе назвал, какая муфта на неё садится. Муфту гладкой канализационной трубы 110 мм на бухту дренажной гофры не предложил</li><li>Дождеприёмник отдал только вместе с решёткой</li></ul></span></label>
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt"><span class="proc">Что не расписывает как схему</span><ul class="steps"><li>Щит, газ и скрытую проводку не расписал как «сделайте сами»</li><li>Сказал, что этот этап делает человек с допуском</li></ul></span></label>
+        </div>
+        <div class="lines"><span>Какая пара</span><input type="text" data-k class="ink" autocomplete="off" /><input type="text" data-k class="ink" autocomplete="off" /></div>
+      </section>
 
-    <section class="day">
-      <h2>День 5. Что с чем стыкуется</h2>
-      <p class="tag">Умение: совместимость. Качество: желание решить задачу человека.</p>
-      <p class="lead">Если две позиции не подходят друг к другу, это говорят до оплаты. Так ремонт не приходится переделывать.</p>
-      <h3>Прочитать</h3>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Открыл <a href="https://akademia.um-ural.ru/truba-drenazhnaya/">трубу дренажную</a>. Назвал, какая муфта на эту трубу садится, а какая нет.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Открыл <a href="https://akademia.um-ural.ru/dozhdepriemniki-komplekt/">дождеприёмники</a>. Дождеприёмник отдаёт только вместе с решёткой.</span></label>
-      <h3>Сделать с Андреем</h3>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>На своей зоне показал пару, которая не стыкуется: грунт не под эту краску, сверло не под этот материал, саморез не в то основание. Сказал об этом до оплаты.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Щит, газ и скрытую проводку не расписал как схему «сделайте сами». Сказал, что этот этап делает человек с допуском.</span></label>
-      <label class="field"><span>Какая пара</span><input class="ink" data-k type="text" autocomplete="off" /></label>
-    </section>
+      <section class="block day">
+        <h2>День 6. Сначала задача, потом совет</h2>
+        <p class="when">Вопросы по задаче. Терпение и спокойный голос. Два живых разговора, Андрей рядом.</p>
+        <div class="list">
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt"><span class="proc">Подход</span><ul class="steps"><li>Заметил человека первым: тот остановился у товара, сравнивает две позиции или ищет взглядом сотрудника</li><li>Подошёл и назвал себя и должность</li><li>До совета спросил: что делают, дом или улица, сухое или влажное место, какое основание, кто будет делать работу, что уже куплено</li></ul></span></label>
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt"><span class="proc">Название и тон</span><ul class="steps"><li>Народное название перевёл в карточку: «болгарка», «пистолет для пены», «саморез с пресс-шайбой» нашёл по официальному имени</li><li>Метизы искал коротким запросом: гвоздь, саморез по дереву, прессшайба, дюбель</li><li>Голос остался спокойным, даже если человек пришёл уставшим. При покупателе не спорил и не обсуждал коллег</li><li>Разговор довёл до выбора, списка, отказа или передачи Андрею</li></ul></span></label>
+        </div>
+        <div class="lines"><span>Два разговора, коротко</span><input type="text" data-k class="ink" autocomplete="off" /><input type="text" data-k class="ink" autocomplete="off" /></div>
+      </section>
 
-    <section class="day">
-      <h2>День 6. Сначала задача, потом совет</h2>
-      <p class="tag">Умение: вопросы по задаче. Качества: терпение, спокойствие, когда человеку тяжело.</p>
-      <p class="lead">Покупатель часто не знает названия и говорит своими словами. Сначала дослушать, потом подбирать.</p>
-      <h3>Прочитать</h3>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>В <a href="https://akademia.um-ural.ru/ispytanie-pk/">стандарте работы</a> прочитал разговор с покупателем. Подходит первым, называет себя и должность, выясняет задачу до совета.</span></label>
-      <h3>Два живых разговора, Андрей рядом</h3>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Заметил человека первым: тот остановился у товара, сравнивает две позиции или ищет взглядом сотрудника. Подошёл и назвал себя.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>До совета спросил задачу: что делают, дом или улица, сухое или влажное место, какое основание, кто будет делать работу, что уже куплено.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Народное название перевёл в карточку: «болгарка», «пистолет для пены», «саморез с пресс-шайбой» нашёл по официальному имени. В поиске метизов запрос короткий: гвоздь, саморез по дереву, прессшайба, дюбель.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Голос остался спокойным, даже если человек пришёл уставшим. При покупателе не спорил и не обсуждал коллег. Разговор довёл до выбора, списка, отказа или передачи Андрею.</span></label>
-      <label class="field"><span>Два разговора, коротко</span><input class="ink" data-k type="text" autocomplete="off" /></label>
-    </section>
+      <section class="block day">
+        <h2>День 7. Собрать то, без чего работа не встанет</h2>
+        <p class="when">Комплект под задачу. Предложил один раз и принял отказ.</p>
+        <div class="list">
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt"><span class="proc">В разговоре</span><ul class="steps"><li>Назвал, без чего выбранная работа не будет сделана, и коротко сказал зачем: к краске грунт и ленту, к саморезу биту, к трубе отвод</li><li>Если в зале есть генератор, назвал, что взять вместе с выбранной моделью</li><li>Предложил это один раз. Отказ принял. В чек не положил то, что к задаче не относится</li></ul></span></label>
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt"><span class="proc">Окно «Допродажи» на кассе</span><ul class="steps"><li>Чек уже собран, штрихкод продавца отсканирован, нажата кнопка оплаты. Деньги ещё не ушли</li><li>В окне до пяти позиций, и только те, что есть в наличии. Галочку поставил на то, что человеку нужно. Количество поправил, если нужна не одна штука</li><li>Если человек отказался, нажал «Пропустить». Второй раз то же самое не предложил</li><li>Если окна не было, а без отвода или крепежа работа не собирается, предложил позицию сам, из основного списка</li></ul></span></label>
+        </div>
+        <div class="lines"><span>Какой комплект</span><input type="text" data-k class="ink" autocomplete="off" /><input type="text" data-k class="ink" autocomplete="off" /></div>
+      </section>
 
-    <section class="day">
-      <h2>День 7. Собрать то, без чего работа не встанет</h2>
-      <p class="tag">Умение: комплект под задачу. Качество: предложил один раз и принял отказ.</p>
-      <p class="lead">Комплект закрывает вопрос человека. В чек не кладут то, что к задаче не относится.</p>
-      <h3>Прочитать</h3>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Открыл <a href="https://akademia.um-ural.ru/dobor-na-kasse/">добор товара на кассе</a>. Окно «Допродажи» открывается, когда чек уже собран и нажата кнопка оплаты, до того как деньги ушли. В нём до пяти позиций, и только те, что есть в наличии. Галочку ставят на то, что человеку нужно. Если он отказался, нажимают «Пропустить». Второй раз то же самое не предлагают.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Открыл <a href="https://akademia.um-ural.ru/generatory-benzinovye/">генераторы</a>, если они стоят в зале. Назвал, что взять вместе с выбранной моделью. Если генераторов в магазине нет, тот же разбор сделал на краске или на трубе своей зоны.</span></label>
-      <h3>Сделать с Андреем</h3>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>В одном разговоре назвал, без чего выбранная работа не будет сделана, и коротко сказал зачем: к краске грунт и ленту, к саморезу биту, к трубе отвод.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Предложил это один раз. Отказ принял. В чек не положил лишнее.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Если окна добора не было, а без сопутствующего работа не собирается, предложил позицию сам, из основного списка.</span></label>
-      <label class="field"><span>Какой комплект</span><input class="ink" data-k type="text" autocomplete="off" /></label>
-    </section>
+      <section class="block day">
+        <h2>День 8. Чтобы товар доехал и полка была целой</h2>
+        <p class="when">Безопасность и хранение. Силы на всю смену.</p>
+        <div class="list">
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt"><span class="proc">Вес и тележка</span><ul class="steps"><li>Разовый подъём без перемещения до 50 кг. Место тяжелее позвал второго человека. Место тяжелее 500 кг двигают машиной</li><li>В тележке тяжёлое положил вниз, хрупкое сверху</li><li>До машины донёс в пределах 50 кг и сам предложил помочь</li></ul></span></label>
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt"><span class="proc">Срок, брак и конец смены</span><ul class="steps"><li>У смеси, клея, герметика, пены, краски и теплоносителя посмотрел срок. Просроченное снял с полки и сразу сказал Андрею</li><li>Битый, мятый и некомплектный товар с полки снял и в ту же смену сказал Андрею</li><li>Зимой сказал, как везти и хранить то, что портится на морозе. Сказал так, как написано на упаковке</li><li>Вечером зона осталась в порядке. Коротко передал, что не закрыто, и ушёл после передачи</li></ul></span></label>
+        </div>
+        <div class="lines"><span>Заметки</span><input type="text" data-k class="ink" autocomplete="off" /><input type="text" data-k class="ink" autocomplete="off" /></div>
+      </section>
 
-    <section class="day">
-      <h2>День 8. Чтобы товар доехал и полка была целой</h2>
-      <p class="tag">Умение: безопасность и хранение. Качество: силы на всю смену.</p>
-      <p class="lead">Тяжёлое, срок годности и мороз. Это часть смены, до самого закрытия.</p>
-      <h3>Прочитать</h3>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>В <a href="https://akademia.um-ural.ru/di-prodavca-pk/">должностной инструкции</a> нашёл нормы веса. Разовый подъём без перемещения для мужчины до 50 кг. Место тяжелее зовёт второго человека. Место тяжелее 500 кг двигают машиной, не руками.</span></label>
-      <h3>Сделать с Андреем</h3>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>В тележке тяжёлое положил вниз, хрупкое сверху. До машины донёс в пределах 50 кг и предложил помочь.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>У смеси, клея, герметика, пены, краски и теплоносителя посмотрел срок. Просроченное снял с полки и сразу сказал Андрею.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Битый, мятый и некомплектный товар с полки снял и в ту же смену сказал Андрею.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Зимой сказал покупателю, как везти и хранить то, что портится на морозе. Свою схему хранения не выдумал.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Вечером зона осталась в порядке. Коротко передал, что не закрыто, и ушёл после передачи.</span></label>
-    </section>
+      <section class="block day">
+        <h2>День 9. Если на крючке пусто</h2>
+        <p class="when">Остаток, аналог и ценник. Честный ответ. Срок называют после проверки.</p>
+        <div class="list">
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt"><span class="proc">Остаток</span><ul class="steps"><li>В помощнике продаж увидел цену и остаток своего магазина</li><li>Список других точек открыл отдельно и закрыл его перед следующим чеком</li><li>Товар есть на другой точке или в интернет-магазине: назвал срок и позвал Андрея. Заказ дальше ведёт Андрей через монитор заказов</li><li>Срок без склада не обещал</li><li>Пустой крючок и то, что спрашивают и не находят, сказал Андрею в ту же смену</li></ul></span></label>
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt"><span class="proc">Цена, розовая строка, аналог</span><ul class="steps"><li>На месте один ценник, и цена на нём совпала с кассой. Два разных ценника на одном месте не оставил</li><li>Розовая строка с галочкой «Мертвый сток» это товар, который долго лежит. Жёлтым отмечен курсор. Если розовая позиция закрывает задачу, её предложил</li><li>Аналог дешевле объяснил по карточке: на какую работу хватит, из чего сделано, какой ресурс</li><li>Скидку, которой нет в акции, не обещал. Если отличие не знает, позвал того, кто знает</li><li>Пришла организация. Документы сам не собрал и товар не отдал на словах. Позвал Андрея</li></ul></span></label>
+        </div>
+        <div class="lines"><span>Заметки</span><input type="text" data-k class="ink" autocomplete="off" /><input type="text" data-k class="ink" autocomplete="off" /></div>
+      </section>
 
-    <section class="day">
-      <h2>День 9. Если на крючке пусто</h2>
-      <p class="tag">Умение: остаток, аналог и ценник. Качества: честный ответ, работа в связке.</p>
-      <p class="lead">Пустая полка ещё не значит, что товара нет. Срок и замену называют после проверки, не на глаз.</p>
-      <h3>Прочитать</h3>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Открыл <a href="https://akademia.um-ural.ru/mertvyj-stok/">мёртвый сток</a>. Розовая строка в подборе и на кассе, с галочкой «Мертвый сток», это товар, который долго лежит. Жёлтым отмечен курсор. Если розовая позиция закрывает задачу, её предлагают.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Открыл <a href="https://akademia.um-ural.ru/monitor-im/">монитор заказов интернет-магазина</a>. Заказ с другой точки и с сайта дальше ведёт Андрей, через этот монитор.</span></label>
-      <h3>Сделать с Андреем</h3>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>В помощнике продаж увидел цену и остаток своего магазина. Список других точек открыл отдельно и закрыл его перед следующим чеком.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Товар есть на другой точке или в интернет-магазине: назвал срок и позвал Андрея. Срок без склада не обещал.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Пустой крючок и то, что спрашивают и не находят, сказал Андрею в ту же смену. Цена на ценнике совпала с кассой. Два разных ценника на одном месте не оставил.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Аналог дешевле объяснил по карточке: на какую работу хватит, из чего сделано, какой ресурс. Скидку, которой нет в акции, не обещал. Если отличие не знает, зовёт того, кто знает.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Пришла организация. Документы сам не собрал и товар не отдал «на словах». Позвал Андрея.</span></label>
-    </section>
+      <section class="block day">
+        <h2>День 10. Полка, чек и возврат</h2>
+        <p class="when">Порядок на полке и касса. Внимание к детали. Оплату проводит под своим именем. Возврат решает Андрей.</p>
+        <div class="list">
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt"><span class="proc">Полка</span><ul class="steps"><li>В лотке крепежа позиции не перемешаны: саморезы, дюбели и фурнитура лежат отдельно</li><li>Ценник один, он читается и совпадает с кассой</li></ul></span></label>
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt"><span class="proc">Чек</span><ul class="steps"><li>Вошёл в кассу под своим именем. Чужой логин не брал</li><li>До оплаты на электроинструменте, сантехнике и сборном механизме посмотрел комплект, гарантийный талон и видимую исправность. Неполный товар не отдал как целый</li><li>Строку чека и сумму прочитал вслух. Спросил, как удобно оплатить: карта, наличные или QR</li><li>Сдачу пересчитал при покупателе. Поблагодарил и отдал чек в руки</li></ul></span></label>
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt"><span class="proc">Возврат «не подошёл»</span><ul class="steps"><li>Срок: 14 дней, день покупки не считает. Товарный вид и полный комплект</li><li>Решение принимает Андрей. Деньги уходят тем же способом, каким прошла оплата</li><li>Если вид или комплект уже не те, сказал об этом спокойно сразу</li></ul></span></label>
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt"><span class="proc">Если касса не работает и лимит</span><ul class="steps"><li>Сначала проверил, что товар есть в этом магазине</li><li>Покупатель сам собрал заказ на gvozditut.ru и оплатил его на сайте. Товар отдал после оплаты. Продажу провёл в мониторе заказов</li><li>Лимит наличных в кассе Заводоуковска 30 000 ₽. Когда сумма подходит к лимиту, сказал Андрею</li></ul></span></label>
+        </div>
+        <div class="lines"><span>Заметки</span><input type="text" data-k class="ink" autocomplete="off" /><input type="text" data-k class="ink" autocomplete="off" /></div>
+      </section>
 
-    <section class="day">
-      <h2>День 10. Полка, чек и спокойный возврат</h2>
-      <p class="tag">Умение: порядок на полке. Качества: внимание к детали, работа в связке. Сюда же касса: без неё смена продавца не закрывается.</p>
-      <p class="lead">В лотке каждый размер лежит отдельно. Оплату проводят под своим именем. Возврат решает старший.</p>
-      <h3>Прочитать</h3>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Открыл <a href="https://akademia.um-ural.ru/vozvrat-tovara/">возврат товара</a>. «Не подошёл»: 14 дней без дня покупки, товарный вид и полный комплект. Деньги уходят тем же способом, каким прошла оплата. Решение принимает старший продавец-консультант.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Открыл инструкцию <a href="https://akademia.um-ural.ru/kassa-ne-rabotaet/">как продать, если касса не работает</a>. Сначала проверяет, что товар есть в этом магазине. Покупатель сам собирает заказ на gvozditut.ru и оплачивает его на сайте. Товар отдают после оплаты и проводят продажу в мониторе заказов.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Открыл <a href="https://akademia.um-ural.ru/limity-kass/">лимит наличных</a>. В кассе Заводоуковска, Черёмуховая, 23, строение 1, лимит 30 000 ₽. Когда сумма подходит к лимиту, говорит Андрею.</span></label>
-      <h3>Сделать с Андреем</h3>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>В лотке крепежа позиции не перемешаны. На полке один ценник, и он совпадает с кассой.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Оплату провёл под своим именем. Чужой логин не брал. Строку чека и сумму прочитал вслух и спросил, как удобно оплатить. На электроинструменте, сантехнике и сборном механизме до оплаты посмотрел комплект, гарантийный талон и видимую исправность.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Возврат «не подошёл» своими словами объяснил Андрею: срок, вид, комплект, кто принимает решение, куда возвращаются деньги. Если вид или комплект уже не те, говорит об этом спокойно сразу.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Сдал <a href="https://akademia.um-ural.ru/mini-opros-pk/">мини-опрос для продавцов</a>. Норма 13 из 16. Попытки две, в зачёт лучший балл.</span></label>
-      <label class="field"><span>Балл мини-опроса</span><input class="ink" data-k type="text" autocomplete="off" /></label>
-    </section>
-
-    <section class="close">
-      <h2>После десятой смены</h2>
-      <p class="lead">Андрей пишет, с какой даты Михаил консультирует сам. До этой даты разговор с покупателем идёт рядом с наставником.</p>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Десять дней закрыты: зал, товар, комплект, полка и касса.</span></label>
-      <label class="item"><input type="checkbox" data-k /><span class="box"></span><span>Мини-опрос не ниже 13 из 16.</span></label>
-      <label class="field"><span>Самостоятельная консультация с</span><input class="ink" data-k type="text" autocomplete="off" /></label>
-      <label class="field"><span>Подпись Андрея</span><input class="ink" data-k type="text" autocomplete="off" /></label>
-      <label class="field"><span>Подпись Михаила</span><input class="ink" data-k type="text" autocomplete="off" /></label>
-      <label class="field"><span>Дата</span><input class="ink" data-k type="text" autocomplete="off" /></label>
-    </section>
-  </main>
+      <section class="admit">
+        <h2>После десятой смены</h2>
+        <p class="scheme">Андрей пишет дату, с которой Михаил консультирует сам. До этой даты разговор с покупателем идёт рядом с наставником.</p>
+        <div class="list">
+          <label class="item"><input type="checkbox" data-k /><span class="box" aria-hidden="true"></span><span class="txt">Десять смен закрыты: зал, товар, комплект, полка и касса</span></label>
+        </div>
+        <div class="sign">
+          <label class="field"><span>Самостоятельная консультация с</span><input type="text" data-k class="ink" autocomplete="off" /></label>
+          <label class="field"><span>Подпись Андрея</span><input type="text" data-k class="ink" autocomplete="off" /></label>
+          <label class="field"><span>Подпись Михаила</span><input type="text" data-k class="ink" autocomplete="off" /></label>
+          <label class="field"><span>Дата</span><input type="text" data-k class="ink" autocomplete="off" /></label>
+        </div>
+      </section>
+    </article>
+  </div>
 
   <script>
     (function () {
-      const root = document.getElementById("sheet");
-      const status = document.getElementById("status");
-      const KEY = "zavodoukovsk-zyablov-pk-10d";
-      const fields = () => Array.from(root.querySelectorAll("[data-k]"));
+      const KEY = "zyablov-pk-10d-v2";
+      const root = document.getElementById("checklist");
+      const status = document.getElementById("save-status");
+      const fields = () => root.querySelectorAll("[data-k]");
       function assignIds() {
-        fields().forEach((el, i) => { el.dataset.id = "f" + i; });
+        fields().forEach((el, i) => { if (!el.dataset.id) el.dataset.id = "f" + i; });
       }
       function collect() {
         const data = {};
@@ -425,35 +376,47 @@
         return data;
       }
       function apply(data) {
+        if (!data) return;
         fields().forEach((el) => {
-          const value = data[el.dataset.id];
-          if (el.type === "checkbox") el.checked = !!value;
-          else if (typeof value === "string") el.value = value;
+          const id = el.dataset.id;
+          if (!(id in data)) return;
+          if (el.type === "checkbox") el.checked = !!data[id];
+          else el.value = data[id] || "";
         });
       }
-      function save() {
+      function save(manual) {
         try {
           localStorage.setItem(KEY, JSON.stringify(collect()));
-          status.textContent = "сохранено";
+          const t = new Date();
+          status.textContent = (manual ? "сохранено " : "автосохранение ") +
+            t.toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit" });
         } catch (e) {
-          status.textContent = "не сохранилось";
+          status.textContent = "не удалось сохранить";
         }
       }
+      function load() {
+        try {
+          const raw = localStorage.getItem(KEY);
+          if (raw) apply(JSON.parse(raw));
+        } catch (e) {}
+      }
       assignIds();
-      try {
-        const raw = localStorage.getItem(KEY);
-        if (raw) apply(JSON.parse(raw));
-      } catch (e) { /* пустое хранилище не мешает листу */ }
-      root.addEventListener("change", save);
-      root.addEventListener("input", save);
-      document.getElementById("btn-print").addEventListener("click", () => window.print());
+      load();
+      let timer;
+      root.addEventListener("input", () => {
+        clearTimeout(timer);
+        timer = setTimeout(() => save(false), 400);
+      });
+      root.addEventListener("change", () => save(false));
+      document.getElementById("btn-save").addEventListener("click", () => save(true));
+      document.getElementById("btn-print").addEventListener("click", () => { save(true); window.print(); });
       document.getElementById("btn-clear").addEventListener("click", () => {
-        if (!window.confirm("Снять все отметки на этом листе?")) return;
-        localStorage.removeItem(KEY);
+        if (!confirm("Очистить все отметки и поля в этом браузере?")) return;
         fields().forEach((el) => {
           if (el.type === "checkbox") el.checked = false;
           else el.value = "";
         });
+        localStorage.removeItem(KEY);
         status.textContent = "очищено";
       });
     })();
